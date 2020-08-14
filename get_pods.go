@@ -2,7 +2,7 @@ package main
 
 import (
     "context"
-    //"fmt"
+    "fmt"
 	"log"
 	
 	//"io/ioutil"
@@ -43,7 +43,7 @@ func getPods() (map[string]string) {
    for _, pod := range pods.Items {
        // Exclude pods that run on the host network
        if *pod.Status.PodIP != *pod.Status.HostIP {
-        //fmt.Printf("%q: %q, %q\n",*pod.Metadata.Name,*pod.Status.PodIP,*pod.Status.HostIP)
+        fmt.Printf("%q: %q, %q\n",*pod.Metadata.Name,*pod.Status.PodIP,*pod.Status.HostIP)
         //results = append(results, *pod.Status.PodIP)
           portMap[*pod.Metadata.Name] = *pod.Status.PodIP
        }
