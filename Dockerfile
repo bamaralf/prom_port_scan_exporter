@@ -7,4 +7,4 @@ RUN go get . && \
     go build .
 
 EXPOSE 8081
-CMD ["./port_scan_exporter"]
+CMD ["./app"]
