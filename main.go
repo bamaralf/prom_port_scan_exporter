@@ -34,16 +34,12 @@ import (
         for {
                  pods := getPods()
                  for podName, podIP := range pods {
-                 //for podName, podIP := range pods {
-                     ip := podIP
-                     host := podName 
-                     
-                     ps := portScan(ip)
-                     fmt.Print(ps)
+                     ps := portScan(podIP)
+                     fmt.Printf("%q:", podName)
                      psLen := float64(len(ps))
                      //for i := 0; i < len(ps); i++ {
                      //    openedPortsHist.WithLabelValues(host).Observe(float64(ps[i]))
-                     openedPorts.WithLabelValues(host).Set(psLen)
+                     openedPorts.WithLabelValues(podName).Set(psLen)
                     // }
                      
                  }
