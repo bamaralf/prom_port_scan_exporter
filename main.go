@@ -2,7 +2,7 @@
 package main
 
 import (
-  //"fmt"
+  "fmt"
   "net/http"
    //"time"
   log "github.com/Sirupsen/logrus"
@@ -39,7 +39,7 @@ import (
                      host := podName 
                      
                      ps := portScan(ip)
-                     //fmt.Print(ps)
+                     fmt.Print(ps)
                      psLen := float64(len(ps))
                      //for i := 0; i < len(ps); i++ {
                      //    openedPortsHist.WithLabelValues(host).Observe(float64(ps[i]))
