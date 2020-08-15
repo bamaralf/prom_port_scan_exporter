@@ -22,7 +22,7 @@ func getPods() (map[string]string) {
    // Pods in all namespaces
    var pods corev1.PodList
    
-   if err = client.List(context.Background(), "", &pods); err != nil {
+   if err = client.List(context.Background(), "kube-system", &pods); err != nil {
 	   log.Fatal(err)
    }
       
