@@ -19,24 +19,13 @@ func getPods() (map[string]string) {
      log.Fatal(err)
     }
 
-/*
-    var nodes corev1.NodeList
-    if err := client.List(context.Background(), "", &nodes); err != nil {
-        log.Fatal(err)
-    }
-    for _, node := range nodes.Items {
-        fmt.Printf("name=%q schedulable=%t\n", *node.Metadata.Name, !*node.Spec.Unschedulable)
-    }
-*/
-
    // Pods in all namespaces
    var pods corev1.PodList
    
-   if err = client.List(context.Background(), "", &pods); err != nil {
+   if err = client.List(context.Background(), "kube-system", &pods); err != nil {
 	   log.Fatal(err)
    }
-   
-   
+      
    //var results []string
    portMap := make(map[string]string)
 
