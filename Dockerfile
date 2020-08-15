@@ -5,8 +5,8 @@ COPY . .
 
 RUN go get . && \
     go build . \
-    sudo apt update \
-    sudo apt install vim -y
+    apt update \
+    apt install vim -y
 
 EXPOSE 8081
 CMD ["./app"]
