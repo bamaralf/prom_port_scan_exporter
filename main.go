@@ -50,13 +50,16 @@ import (
 
 /*    
      func init() {
-      // prometheus.MustRegister(openedPorts)
+       prometheus.MustRegister(openedPorts)
        prometheus.MustRegister(openedPortsHist)
+       prometheus.Unregister(prometheus.NewProcessCollector(os.Getpid(), ""))
+       prometheus.Unregister(prometheus.NewGoCollector()) 
      }
 */
 func main() {
   getMetrics()
   
+  http.HandleFunc("/health", healthCheck)
   http.Handle("/metrics", promhttp.Handler())
   log.Info("Beginning to serve on port :8081")
   http.ListenAndServe(":8081", nil)
